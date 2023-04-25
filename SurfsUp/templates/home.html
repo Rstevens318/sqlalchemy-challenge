@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to my Surfs Up Flask App</title>   
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('precipitation') }}">Precipitation</a></li>
+            <li><a href="{{ url_for('stations') }}">Stations</a></li>
+            <li><a href="{{ url_for('tobs') }}">Tobs</a></li>
+            <li><a href="{{ url_for('start') }}/<start>">Start Date</a></li>
+            <li><a href="{{ url_for('start_end') }}/<start>/<end>">Start and End Dates</a></li>
+        </ul>
+    </nav>
+    <h1>Welcome to my Surfs Up Flask App</h1>
+    <p>Available Routes For Browsing Are:</p>
+    <ul>
+        <li><a href="{{ url_for('precipitation') }}">/api/v1.0/precipitation</a></li>
+        <li><a href="{{ url_for('stations') }}">/api/v1.0/stations</a></li>
+        <li><a href="{{ url_for('tobs') }}">/api/v1.0/tobs</a></li>
+        <li><a href="{{ url_for('start') }}/<start>">/api/v1.0/&lt;start&gt;</a></li>
+        <li><a href="{{ url_for('start_end') }}/<start>/<end>">/api/v1.0/&lt;start&gt;/&lt;end&gt;</a></li>
+    </ul>
+</body>
+</html>
