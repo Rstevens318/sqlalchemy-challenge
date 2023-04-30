@@ -1,26 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang=\"en">
 <head>
-    <title>Welcome to my Surfs Up Flask App</title>   
+    <meta charset="UTF-8">
+    <title>Hawaii Climate Analysis</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('precipitation') }}">Precipitation</a></li>
-            <li><a href="{{ url_for('stations') }}">Stations</a></li>
-            <li><a href="{{ url_for('tobs') }}">Tobs</a></li>
-            <li><a href="{{ url_for('start') }}/<start>">Start Date</a></li>
-            <li><a href="{{ url_for('start_end') }}/<start>/<end>">Start and End Dates</a></li>
-        </ul>
-    </nav>
-    <h1>Welcome to my Surfs Up Flask App</h1>
-    <p>Available Routes For Browsing Are:</p>
+    <h1>Time to shred some tubes and get gnarly with the Hawaii Climate Analysis API!</h1>
+    <img src="https://i.redd.it/fcgbnakge0sa1.jpg" alt="Keanu Reeves in Point Break">
     <ul>
-        <li><a href="{{ url_for('precipitation') }}">/api/v1.0/precipitation</a></li>
-        <li><a href="{{ url_for('stations') }}">/api/v1.0/stations</a></li>
-        <li><a href="{{ url_for('tobs') }}">/api/v1.0/tobs</a></li>
-        <li><a href="{{ url_for('start') }}/<start>">/api/v1.0/&lt;start&gt;</a></li>
-        <li><a href="{{ url_for('start_end') }}/<start>/<end>">/api/v1.0/&lt;start&gt;/&lt;end&gt;</a></li>
+        <li><a href="/api/v1.0/precipitation">Precipitation</a></li>
+        <li><a href="/api/v1.0/stations">Stations</a></li>
+        <li><a href="/api/v1.0/tobs">Tobs</a></li>
+        <li>
+            <a href="#" id="start-link">Start Date</a>
+            <input type="date" id="start-date-input" onchange="updateStartDateLink()">
+        </li>
+        <li>
+            <a href="#" id="range-link">Start and End Dates</a>
+            <input type="date" id="start-date-input2">
+            <input type="date" id="end-date-input">
+            <button onclick="updateStartEndDateLink()">Submit</button>
+        </li>
     </ul>
+    
+    
+    <p>Available Routes For Manual Browsing Are:</p>
+    
+    <ul>
+        <li>/api/v1.0/precipitation</li>
+        <li>/api/v1.0/stations</li>
+        <li>/api/v1.0/tobs</li>
+        <li>/api/v1.0/start<br/></li>
+        Note: Please enter a start date in the format of YYYY-MM-DD when using URL<br/>
+        <li>/api/v1.0/start/end<br/></li>
+        Note: Please enter a start date and end date in the format of YYYY-MM-DD when using URL<br/>
+    </ul>
+    
+    <h2>Always remember to check your weather before shreddin' the gnar<br/>
+    or you'll wind up bummed out like these guys!</h2>
+    <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/02/point-break-ending-keanu-reeves.jpg?q=50&fit=contain&w=1140&h=&dpr=1.5" alt="Keanu and Patrick in Point Break">
+    <script>
+        function updateStartDateLink() {
+            var startDate = document.getElementById('start-date-input').value;
+            var link = document.getElementById('start-link');
+            link.href = "/api/v1.0/" + startDate;
+        }
+    
+        function updateStartEndDateLink() {
+            var startDate = document.getElementById('start-date-input2').value;
+            var endDate = document.getElementById('end-date-input').value;
+            var link = document.getElementById('range-link');
+            link.href = "/api/v1.0/" + startDate + "/" + endDate;
+        }
+    </script>
 </body>
 </html>
+
+
